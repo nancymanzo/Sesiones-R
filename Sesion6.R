@@ -51,11 +51,28 @@ ggplotly(g1, tooltip = c("Año", "Total"))
 
 
 #Características de las usuarias
-ile_fsex <- ile %>% filter(!is.na(fsexual))
-t1 <- ile_fsex %>% summarise(Media = mean(fsexual),
-                             Mediana = median(fsexual),
-                             MAD = mad(fsexual),
-                             IQR = IQR(fsexual))
+
+ile_edad <- ile %>% 
+  filter(!is.na(edad))
+t1 <- ile_edad %>% 
+  summarise(Total = n(),
+            Media = mean(edad),
+            Mediana = median(edad),
+            MAD = mad(edad),
+            IQR = IQR(edad))
+
+
+        ile %>% 
+          filter(año==2020) %>% 
+          ggplot(aes(x=edad, fill="salmon3"))+
+          geom_histogram()+
+            labs(title = "Edad de las mujeres que accedieron al ILE en la Ciudad de México,2020.",
+                 x= "",
+                 y="",
+                 caption = "Fuente: Datos abiertos de la CDMX https://datos.cdmx.gob.mx/explore/dataset/interrupcion-legal-del-embarazo/export/.")+
+            theme_minimal(base_size=15)+ 
+            theme(legend.position="none")
+
 
 
 
