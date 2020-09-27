@@ -60,7 +60,7 @@ ile %>%
       y = "") +
  ggthemes::theme_tufte() ->g2 #Se necesita ggthemes.
 
-  ggplotly(g2, tooltio= c("año"))
+  ggplotly(g2)
 
 
 
@@ -88,7 +88,7 @@ ile %>%
  ggplot(aes(x = edad, 
             y = nhijos, 
             colour = edad, 
-            size = nhijos) +
+            size = nhijos)) +
  geom_point() +
  scale_color_distiller(palette = "PuRd") +
  labs(x = "Edad de las mujeres", 
